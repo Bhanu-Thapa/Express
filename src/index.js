@@ -7,10 +7,22 @@ const path = require('path');
 
 // console.log(path.join(__dirname, '../public'));
 
-const staticPath = path.join(__dirname, '../public');
+// const staticPath = path.join(__dirname, '../public');
+
+// to set the view engine
+app.set('view engine', 'hbs');
+
+app.set('views', path.join(__dirname, '../views'));
+
+// template engine route
+app.get('/', (req, res) => {
+  res.render('index', {
+    heading: 'dynamic content',
+  });
+});
 
 // builtin middleware
-app.use(express.static(staticPath));
+// app.use(express.static(staticPath));
 
 app.get('/', (req, res) => {
   res.send('Hello World From The Express');
