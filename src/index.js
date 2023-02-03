@@ -12,13 +12,17 @@ const path = require('path');
 // to set the view engine
 app.set('view engine', 'hbs');
 
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../templates'));
 
 // template engine route
 app.get('/', (req, res) => {
   res.render('index', {
     heading: 'dynamic content',
   });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about');
 });
 
 // builtin middleware
