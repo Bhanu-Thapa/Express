@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const hbs = require('hbs');
 
 // relative absolute - path
 // console.log(__dirname);
@@ -12,7 +13,9 @@ const path = require('path');
 // to set the view engine
 app.set('view engine', 'hbs');
 
-app.set('views', path.join(__dirname, '../templates'));
+app.set('views', path.join(__dirname, '../templates/views'));
+const partialsPath = path.join(__dirname, '../templates/partials');
+hbs.registerPartials(partialsPath);
 
 // template engine route
 app.get('/', (req, res) => {
