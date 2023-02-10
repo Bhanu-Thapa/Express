@@ -14,6 +14,7 @@ const hbs = require('hbs');
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, '../templates/views'));
+
 const partialsPath = path.join(__dirname, '../templates/partials');
 hbs.registerPartials(partialsPath);
 
@@ -26,6 +27,18 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('about');
+});
+
+app.get('/about/*', (req, res) => {
+  res.render('404', {
+    errorcomment: "opps in about, page can't be found",
+  });
+});
+
+app.get('*', (req, res) => {
+  res.render('404', {
+    errorcomment: "opps page can't be found",
+  });
 });
 
 // builtin middleware
