@@ -26,7 +26,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-  res.render('about');
+  // console.log(req.query);
+  res.render('about', {
+    name: req.query.name,
+    age: req.query.age,
+  });
 });
 
 app.get('/about/*', (req, res) => {
